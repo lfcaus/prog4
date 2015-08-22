@@ -10,9 +10,9 @@ import java.util.ListIterator;
 
 public class ProdutoManager implements IProdutoManager{
     
-    private List <Produto> produtos;
+    private static List <Produto> produtos;
             
-    public ProdutoManager(){
+    static{
         
         produtos = new ArrayList<>();
         
@@ -43,7 +43,21 @@ public class ProdutoManager implements IProdutoManager{
 
     @Override
     public List<Produto> obterTodos() {
-          
+          return produtos;
+    }
+
+    @Override
+    public Produto obterPorId(int id) {
+        
+        for(Produto produto : produtos)
+            if(id == produto.getId()){
+                return produto;
+            }else{
+                System.out.println("Erro");
+            }
+        
+        return null;
+        //return produtos.get(id);
     }
 
 
