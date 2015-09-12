@@ -1,5 +1,6 @@
 package br.pucpr.prog4.lojaold.controllers;
 
+import br.pucpr.prog4.lojaold.models.ClienteManager;
 import br.pucpr.prog4.lojaold.models.Pessoa;
 import java.io.IOException;
 import java.text.ParseException;
@@ -40,9 +41,12 @@ public class ClienteServlet extends HttpServlet {
             pessoa.setDataNasc(dt);
             pessoa.setSexo(request.getParameter("sexo"));
             pessoa.setTipoPessoa(request.getParameter("tipoP"));
-        } catch (ParseException ex) {
+            
+            } catch (ParseException ex) {
             Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        ClienteManager manager = new ClienteManager();
+        manager.cadastrar(pessoa);
 
 
     }
